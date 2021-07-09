@@ -6,7 +6,7 @@ const weather = (latitude, longitude, callback) => {
         if (error) {
             callback('Unable to connect to weather service!', undefined);
         } else if (body.error){
-            callback(body.error, undefined);
+            callback('Request failed, incorrect data!', undefined);
         } else {
             callback(undefined, body);
         }
