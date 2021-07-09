@@ -5,14 +5,14 @@ const weather = require('./utils/weather');
 const location = process.argv[2];
 if (!location) return console.log('Specify a location!');
 else {
-    geocode(location, (error, data) => {
+    geocode(location, (error, {name, latitude, longitude} = {}) => {
         if (error) return console.log(error);
 
-        weather(data.latitude, data.longitude, (error, weather_data) => {
+        weather(latitude, longitude, (error, {current}) => {
             if (error) {
                 console.log(error);
             } else {
-                console.log(data.name + ': ' + weather_data.current.weather_descriptions + '. It is currently ' + weather_data.current.temperature + ' degrees out. There is a ' + weather_data.current.precip + '% chance of rain!');
+                console.log(name + ': ' + current.weather_descriptions + '. It is currently ' + current.temperature + ' degrees out. There is a ' + current.precip + '% chance of rain!');
             }
         });
     });
