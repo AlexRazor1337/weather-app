@@ -63,6 +63,15 @@ header a {
     margin-right: 50px;
 }
 
+#weatherstack_logo {
+    max-height: 20vh;
+    filter: invert(1);
+}
+
+#mabpox_logo {
+    margin-left: 100px;
+    max-height: 20vh;
+}
 
 .lds-ring {
     display: inline-block;
