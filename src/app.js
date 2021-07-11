@@ -24,6 +24,7 @@ app.get('', (req, res) => {
     })
 })
 
+
 app.get('/about', (req, res) => {
     res.render('about', {
         title: 'About',
@@ -31,12 +32,6 @@ app.get('/about', (req, res) => {
     })
 })
 
-app.get('*', (req, res) => {
-    res.render('404', {
-        errorMesg: 'Page not found!',
-        name: 'AR'
-    })
-})
 
 app.get('/weather', (req, res) => {
     if (!req.query.address) {
@@ -63,6 +58,15 @@ app.get('/weather', (req, res) => {
         });
     });
 });
+
+
+app.get('*', (req, res) => {
+    res.render('404', {
+        errorMesg: 'Page not found!',
+        name: 'AR'
+    })
+})
+
 
 app.listen(process.env.port, () => {
     console.log('Server is up on port ' + process.env.port + '!');
