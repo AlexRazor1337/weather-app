@@ -38,6 +38,32 @@ app.get('*', (req, res) => {
     })
 })
 
+app.get('/weather', (req, res) => {
+    if (!req.query.address) {
+        return res.send({
+            error: 'Please provide an address'
+        });
+    }
+
+    geocode(req.query.address, (error, {location, latitude, longitude} = {}) => {
+        if (error) return res.send({error});
+
+        weather(latitude, longitude, (error, {current}) => {
+            if (error) {
+                return res.send({error});
+            } else {
+                console.log(location);
+                res.send({
+                    location,
+                    description: current.weather_descriptions,
+                    temperature: current.temperature,
+                    precip: current.precip
+                });
+            }
+        });
+    });
+});
+
 app.listen(process.env.port, () => {
     console.log('Server is up on port ' + process.env.port + '!');
 });
