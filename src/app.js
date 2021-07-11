@@ -31,6 +31,12 @@ app.get('/about', (req, res) => {
     })
 })
 
+app.get('*', (req, res) => {
+    res.render('404', {
+        errorMesg: 'Page not found!',
+        name: 'AR'
+    })
+})
 
 app.listen(process.env.port, () => {
     console.log('Server is up on port ' + process.env.port + '!');
