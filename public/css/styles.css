@@ -37,11 +37,6 @@ html {
     justify-content: center;
 }
 
-.about_img {
-    max-width: 256px;
-    max-height: 256px;
-}
-
 footer {
     border-top: 1px solid rgb(61, 54, 54);
     color: rgb(61, 54, 54);
