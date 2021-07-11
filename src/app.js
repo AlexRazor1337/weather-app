@@ -5,10 +5,16 @@ const weather = require('./utils/weather');
 const location = process.argv[2];
 if (!location) return console.log('Specify a location!');
 else {
-    geocode(location, (error, {name, latitude, longitude} = {}) => {
+    geocode(location, (error, {
+        name,
+        latitude,
+        longitude
+    } = {}) => {
         if (error) return console.log(error);
 
-        weather(latitude, longitude, (error, {current}) => {
+        weather(latitude, longitude, (error, {
+            current
+        }) => {
             if (error) {
                 console.log(error);
             } else {
