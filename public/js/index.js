@@ -14,7 +14,7 @@ weather_form.addEventListener('submit', (e) => {
     const cached_data = Cookies.get(search);
     if (cached_data) return callback(JSON.parse(cached_data));
 
-    const url = window.location.href.replaceAll('/?', '/') + 'weather?address=' + encodeURIComponent(search);
+    const url = '/weather?address=' + encodeURIComponent(search);
     fetch(url).then((response) => {
         response.json().then((data) => {
             if (data.error) {
